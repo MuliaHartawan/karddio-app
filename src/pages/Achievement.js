@@ -1,0 +1,56 @@
+import React from 'react';
+
+const Achievement = () => {
+    return (
+        <div className="px-4 mb-3 md:px-24">
+            <h1 className="font-bold text-3xl lg:text-5xl tracking-wide" >Final Calories</h1>
+            <p className="text-sm font-light text-green-400 mb-3 lg:text-2xl" >Great, you’ve been completed level 1</p>
+            <div className="flex flex-col md:flex-row" >
+                <div className="grid grid-cols-3 md:w-2/3 md:mr-16 md:pl-8 lg:mr-24 lg:max-w-xl
+                                 p-6 gap-x-3 gap-y-10 rounded-lg bg-gradient-to-l from-green-300 to-blue-400" >
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium text-white" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Duration <br />workout</h2>
+                        <p className="font-light lg:text-lg" >15 mins</p>
+                    </div>
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Weight <br />Before</h2>
+                        <p className="font-light lg:text-lg" >71 Kg</p>
+                    </div>
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Calories <br />Need</h2>
+                        <p className="font-light lg:text-lg" >1500 kcal</p>
+                    </div>
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Burn <br />Calories</h2>
+                        <p className="font-light lg:text-lg" >1500 kcal</p>
+                    </div>
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Weight <br />After</h2>
+                        <p className="font-light lg:text-lg" >71 Kg</p>
+                    </div>
+                    <div className="flex flex-col items-center text-white space-y-2 font-medium pb-8" >
+                        <h2 className="text-center lg:text-xl lg:font-medium" >Current <br />Calories</h2>
+                        <p className="font-light lg:text-lg" >1500 kcal</p>
+                    </div>
+                </div>
+                <div className="md:w-1/3 lg:mr-16" >
+                    <div className="flex flex-col justify-center items-center mt-4 md:mt-0 space-y-4 md:space-y-6" >
+                        <div className="relative pt-4" >
+                            <img src="./image/trophy.png" alt=""
+                                    className="w-24 h-24 md:w-32 md:h-32 lg:h-40 lg:w-40" ></img>
+                            <span className="absolute bg-green-400 w-8 h-8 md:w-12 md:h-12 rounded-full top-0 right-2
+                                            flex items-center justify-center font-medium text-white md:text-lg" >1</span>
+                        </div>
+                        <p className="text-2xl md:text-3xl" ><span className="font-medium text-yellow-400" >+200 </span>points</p>
+                        <button className="bg-green-500 hover:bg-green-700 w-full md:max-w-xs text-center text-white font-normal py-2 px-4 
+                                        rounded-md focus:outline-none focus:shadow-outline" type="button">
+                            Next Level
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Achievement;
