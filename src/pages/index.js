@@ -5,6 +5,7 @@ import Achievement from './Achievement';
 import Login from './Login';
 import SignUp from './SignUp';
 import IdentifyPopUp from './IdentifyPopUp';
+import UpdateDataForm from './UpdateDataForm';
 import IdentifyForm from './IdentifyForm';
 import DataSaved from './DataSaved';
 
@@ -15,5 +16,6 @@ export { Home,
         Login,
         SignUp,
         IdentifyPopUp,
+        UpdateDataForm,
         IdentifyForm,
         DataSaved };

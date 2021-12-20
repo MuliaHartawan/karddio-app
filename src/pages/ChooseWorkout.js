@@ -4,7 +4,7 @@ import ProgressIdb from '../data/progress-idb';
 
 const ChooseWorkout = () => {
     return(
-        <div className="px-4 mb-3 lg:px-24">
+        <div className="px-4 mb-3 lg:pl-0 lg:pr-24">
             <h1 className="text-lg md:text-xl lg:4xl tracking-wide font-bold mb-8">Choose your <br />
              workout</h1>
             <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4  md:space-y-0 md:mr-16 lg:mr-20">

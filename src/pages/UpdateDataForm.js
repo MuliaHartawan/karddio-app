@@ -4,17 +4,24 @@ import axios from "axios";
 
 import ProgressIdb from '../data/progress-idb';
 
-const IdentifyForm = () => {
+const UpdateDataForm = () => {
     const { register, handleSubmit } = useForm();
-    const [error, setError] = React.useState();
     const [goals, setGoals] = React.useState([]);
     const [token, setToken] = React.useState([]);
+    const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
         const getData = async () => {
         const response = await ProgressIdb.getToken();
+        console.log(response);
         const token = await response[0].token;
         setToken(token);
+        await axios
+        .get('http://localhost:5000/api/profile', 
+        {headers: {Authorization : token}})
+        .then(response => {
+            setData(response.data.body);
+        })
         const result = await axios.get('http://localhost:5000/api/list-goal',
             {headers: {Authorization : token}});
             setGoals(result.data.body);
@@ -25,14 +32,12 @@ const IdentifyForm = () => {
     const onSubmit = (data) => {
         console.log(data);
       axios
-          .post('http://localhost:5000/api/identify', data,
+          .put('http://localhost:5000/api/goal', data,
           {
-            headers: {
-            'Content-Type': 'application/json',
-            Authorization : token}
+            headers: { Authorization : token }
         })
-          .then(response => {window.location.href = '/'})
-          .catch(errors => {setError(errors.response.data.message[0])});
+          .then(response => {window.location.href = '/achievement'})
+          .catch(errors => {console.log(errors.response.data)});
     }
     return (
     <div className="fixed top-0 z-10 bg-white w-screen h-screen overflow-scroll grid grid-cols-1">
@@ -46,26 +51,26 @@ const IdentifyForm = () => {
                         <label className="block text-sm font-normal mb-1 md:mb-2 md:text-xl" for="age">
                             Age
                         </label>
-                        <input {...register("age")}
+                        <input disabled
                         className="appearance-none border rounded md:text-base lg:text-xl border-gray-400 w-full py-3 px-2 text-gray-700 leading-tight
-                                        focus:outline-none" id="age" type="text" placeholder="Age" />
+                                        focus:outline-none" id="age" type="text" placeholder={data.age} />
                         </div>
                         <div className="mb-4 md:mb-8">
                             <label className="block text-sm font-normal mb-1 md:mb-2 md:text-xl">
                                 Sex
                             </label>
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="rounded border border-gray-400">
-                                    <input {...register("sex")}
+                                <div className="rounded bg-gray-50 border border-gray-400">
+                                    <input disabled
                                     id="male" type="radio" name="sex" value="male" className="hidden" />
-                                    <label for="male" className="flex items-center cursor-pointer text-sm py-3 px-2">
+                                    <label for="male" className="flex items-center text-gray-400 cursor-pointer text-sm py-3 px-2">
                                     <span className="w-3 h-3 inline-block mr-2 md:text-xl rounded-full border border-grey bg-gray-400 shadow-inset flex-no-shrink"></span>
                                     Male</label>
                                 </div>
-                                <div className="rounded border border-gray-400">
-                                    <input {...register("sex")}
+                                <div className="rounded bg-gray-50 border border-gray-400">
+                                    <input disabled
                                     id="female" type="radio" name="sex" value="female" className="hidden" />
-                                    <label for="female" className="flex items-center cursor-pointer text-sm py-3 px-2">
+                                    <label for="female" className="flex items-center text-gray-400 cursor-pointer text-sm py-3 px-2">
                                     <span className="w-3 h-3 inline-block mr-2 md:text-xl rounded-full border border-grey bg-gray-400 shadow-inset flex-no-shrink"></span>
                                     Female</label>
                                 </div>
@@ -75,8 +80,8 @@ const IdentifyForm = () => {
                         <label className="block text-sm font-normal mb-1 md:mb-2 md:text-xl" for="height">
                             Height
                         </label>
-                        <input {...register("height")}
-                        className="appearance-none border rounded md:text-base lg:text-xl border-gray-400 w-full py-3 px-2 text-gray-700 leading-tight focus:outline-none" id="height" type="text" placeholder="Centimeter" />
+                        <input disabled
+                        className="appearance-none border rounded md:text-base lg:text-xl border-gray-400 w-full py-3 px-2 text-gray-700 leading-tight focus:outline-none" id="height" type="text" placeholder={data.height} />
                         </div>
                         <div className="mb-4">
                         <label className="block text-sm font-normal mb-1 md:mb-2 md:text-xl" for="weight">
@@ -92,8 +97,8 @@ const IdentifyForm = () => {
                             <div className="grid grid-cols-1 gap-4">
                             {goals.map((goal) => (
                                 <div className="rounded border border-gray-400">
-                                    <input {...register("goal")}
-                                    id={goal.name} type="radio" name="goal" value={goal.id} className="hidden" />
+                                    <input {...register("goalId")}
+                                    id={goal.name} type="radio" name="goalId" value={goal.id} className="hidden" />
                                     <label for={goal.name} className="flex items-center cursor-pointer text-sm md:text-base lg:text-xl py-3 px-2">
                                     <span className="w-3 h-3 inline-block mr-2 rounded-full border border-grey bg-gray-400 shadow-inset flex-no-shrink"></span>
                                     {goal.name}</label>
@@ -103,7 +108,6 @@ const IdentifyForm = () => {
                         </div>
                     </div>
                 <div className="flex flex-col justify-center items-center">
-                    <p className='font-bold text-red-500'>{error}</p>
                     <button className="bg-green-500 hover:bg-green-700 w-full md:max-w-sm md:mx-auto text-center text-white font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         Save
                     </button>
@@ -114,4 +118,4 @@ const IdentifyForm = () => {
     );
 }
 
-export default IdentifyForm;
+export default UpdateDataForm;

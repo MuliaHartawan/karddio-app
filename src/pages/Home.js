@@ -40,7 +40,7 @@ const Home = () => {
             <div className='flex flex-col space-y-4'>
                 <h2 className="text-lg font-bold md:text-xl lg:text-3xl mb-2">Current Exercise</h2>
             {onProgress.map((item) => (
-                <div className="w-72 lg:w-80 px-1 py-2 justify-between flex flex-row rounded-md border border-gray-400">
+                <div key={item.id} className="w-72 lg:w-80 px-1 py-2 justify-between flex flex-row rounded-md border border-gray-400">
                     <div className="flex items-center ml-2">
                         <img src={`./image/${item.workout}.jpg`}alt="tes"
                             className="h-16 w-20 lg:h-3236"></img>
@@ -180,7 +180,7 @@ class ProgressChart extends React.Component {
           }
         },
         series: [{
-          name: 'series-1',
+          name: 'Point',
           data: [200, 100, 100, 200, 300, 100, 0]
         }]
       }

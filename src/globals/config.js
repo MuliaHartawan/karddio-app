@@ -3,6 +3,7 @@ const CONFIG = {
     DATABASE_VERSION: 1,
     OBJECT_ONPROGRESS: 'onprogress',
     OBJECT_COMPLETE: 'complete',
+    OBJECT_TOKEN: 'token'
   };
   
   export default CONFIG;
