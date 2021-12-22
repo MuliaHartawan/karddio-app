@@ -18,8 +18,9 @@ const Profile = () => {
         {headers: {Authorization : token}})
         .then(response => {
             setData(response.data.body);
-            setGoal(response.data.body.goals[0].name)
-            setLevel(response.data.body.rules[0].name)
+            const goals = response.data.body.goals
+            setGoal(goals[goals.length - 1].name)
+            setLevel(response.data.body.rules[0].id)
         })
     };
     getData();
@@ -34,7 +35,7 @@ const Profile = () => {
                             className="relative w-32 h-32 rounded-full md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56" >
                             </img>
                         <span className="absolute flex items-center justify-center text-white right-0 bottom-2 h-10 w-10 lg:h-12 lg:w-12 
-                                        lg:bottom-4 lg:right-2 shadow-green rounded-full bg-green-400" >{level}</span>
+                                        lg:bottom-4 lg:right-2 shadow-green rounded-full bg-green-400" >Lv.{level}</span>
                     </div>
                     <h2 className="font-medium text-xl lg:text-2xl" >{data.name}</h2>
                 </div>
@@ -48,7 +49,7 @@ const Profile = () => {
                     <div>
                         <h3 className="text-xl font-medium mb-2 lg:2xl" >Ideal Weight</h3>
                         <p className="font-normal rounded-md w-full border border-gray-400 pl-2 py-3" >
-                        69
+                        {data.height - 110}
                         </p>
                     </div>
                     <div className="flex justify-center mt-12 mb-8 md:mt-8">

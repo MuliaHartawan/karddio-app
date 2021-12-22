@@ -3,6 +3,7 @@ import Profile from './Profile';
 import Progress from './Progress';
 import Achievement from './Achievement';
 import Login from './Login';
+import Alert from './Alert';
 import SignUp from './SignUp';
 import IdentifyPopUp from './IdentifyPopUp';
 import UpdateDataForm from './UpdateDataForm';
@@ -14,6 +15,7 @@ export { Home,
         Progress, 
         Achievement,
         Login,
+        Alert,
         SignUp,
         IdentifyPopUp,
         UpdateDataForm,

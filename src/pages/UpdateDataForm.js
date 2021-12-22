@@ -13,7 +13,6 @@ const UpdateDataForm = () => {
     React.useEffect(() => {
         const getData = async () => {
         const response = await ProgressIdb.getToken();
-        console.log(response);
         const token = await response[0].token;
         setToken(token);
         await axios
@@ -30,7 +29,6 @@ const UpdateDataForm = () => {
 }, []);
 
     const onSubmit = (data) => {
-        console.log(data);
       axios
           .put('http://localhost:5000/api/goal', data,
           {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import axios from 'axios';
 
 import { RiCheckboxCircleFill} from 'react-icons/ri';
 
@@ -8,9 +9,19 @@ import ProgressIdb from '../data/progress-idb';
 const Home = () => {
     const [finishedProgress, setFinishedProgress] = React.useState([]);
     const [onProgress, setOnProgress] = React.useState([]);
+    const [level, setLevel] = React.useState([]);
 
     React.useEffect(() => {
         const getData = async () => {
+          const response = await ProgressIdb.getToken();
+          const token = await response[0].token;
+          await axios
+          .get('http://localhost:5000/api/profile', 
+          {headers: {Authorization : token}})
+          .then(response => {
+              setLevel(response.data.body.rules[0].id)
+          })
+          
         const onProgress = await ProgressIdb.getOnProgress();
         const finishedProgress = await ProgressIdb.getFinishedProgress();
 
@@ -33,7 +44,7 @@ const Home = () => {
                     <img src="./image/trophy.png" alt=""
                             className="w-10 h-10 md:w-14 md:h-14 lg:h-20 lg:w-20 mb-0" ></img>
                     <span className="absolute bg-green-400 w-4 h-4 md:w-5 md:h-5 lg:w-8 lg:h-8 rounded-full top-0 right-1
-                                    text-xs flex items-center justify-center font-medium text-white md:text-sm" >1</span>
+                                    text-xs flex items-center justify-center font-medium text-white md:text-sm" >{level}</span>
                 </div>
             </div>
             <ProgressChart />
@@ -179,15 +190,31 @@ class ProgressChart extends React.Component {
             categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
           }
         },
-        series: [{
-          name: 'Point',
-          data: [200, 100, 100, 200, 300, 100, 0]
-        }]
+        series: [],
       }
     }
+    async componentDidMount(){
+      const getToken = await ProgressIdb.getToken();
+      const token = await getToken[0].token;
+      console.log(token)
+       await axios
+        .get('http://localhost:5000/api/', 
+        {headers: {Authorization : token}})
+            .then(function (response) {
+              const history = response.data.body.history_point;
+              const point = history.map(history => history.point);
+              console.log(point);
+              this.setState({
+                series : [{
+                  name : 'History Point',
+                  data : point}]
+              });
+              }.bind(this));
+    }
+    
     render() {
       return (
-        <Chart options={this.state.options} series={this.state.series} type="area" />
+        <Chart ref="point" options={this.state.options} series={this.state.series} type="area" />
       )
     }
   }

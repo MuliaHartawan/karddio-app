@@ -38,7 +38,7 @@ const ChooseWorkout = () => {
                 <a href=" " onClick={()=>ProgressIdb.addProgress('Yoga')}>
                     <div className="w-60 md:w-28 lg:w-32 xl:w-44 px-1 py-2 flex flex-row md:flex-col md:items-center space-x-8 md:space-x-0 rounded-md border border-gray-400">
                         <div className="flex items-center ml-2">
-                            <img src="./image/Yoga.jpg" alt="tes"
+                            <img src="./image/Yoga.svg" alt="tes"
                                 className="h-16 w-20 md:h-24 md:w-28 lg:h-24 lg:w-28"></img>
                         </div>
                         <p className="flex justify-center items-center text-sm lg:text-lg font-bold">Yoga</p>

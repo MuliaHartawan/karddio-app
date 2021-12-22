@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { Home, Profile, Progress, Achievement, Login, UpdateDataForm,
-         SignUp,IdentifyPopUp,IdentifyForm, DataSaved } from './pages'
+        Alert, SignUp,IdentifyPopUp,IdentifyForm, DataSaved } from './pages'
 import { NavBar } from './layout'
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/alert" element={<Alert />} />
         <Route path="/identifypopup" element={<IdentifyPopUp />} />
         <Route path="/identifyform" element={<IdentifyForm />} />
         <Route path="/updatedataform" element={<UpdateDataForm />} />
