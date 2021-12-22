@@ -202,8 +202,8 @@ class ProgressChart extends React.Component {
         {headers: {Authorization : token}})
             .then(function (response) {
               const history = response.data.body.history_point;
-              const point = history.map(history => history.point);
-              console.log(point);
+              const getPoint = history.map(history => history.point);
+              const point = getPoint.slice(0,7)
               this.setState({
                 series : [{
                   name : 'History Point',

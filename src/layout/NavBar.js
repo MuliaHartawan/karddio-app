@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
+import ProgressIdb from "../data/progress-idb";
+
 import { AiOutlineMenu, AiOutlineClose, AiFillHome } from 'react-icons/ai';
 import { GiProgression } from 'react-icons/gi';
 import { VscAccount } from 'react-icons/vsc';
@@ -77,7 +79,8 @@ export default function Navbar({ fixed }) {
             </li>
             ))}
               <li className="nav-item">
-                <NavLink end to="/" className="flex flex flex-col justify-center items-center"
+                <NavLink end to="/login" onClick={()=> ProgressIdb.deleteToken()}
+                className="flex flex flex-col justify-center items-center"
                   >
                       <HiOutlineLogout className="text-white text-2xl lg:text-3xl" />
                       <span className="text-white font-normal">Logout</span>

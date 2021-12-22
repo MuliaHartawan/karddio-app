@@ -14,10 +14,16 @@ const Login = () =>
     axios
         .post('http://localhost:5000/api/login', data)
         .then(response => {
-            const token = `Bearer ${response.data.data.access_token}`;
-            ProgressIdb.addToken(token);
-            window.location.href = '/identifypopup'})
-        .catch(errors => {setError(errors.response.data.message[0])});
+           if (response.data.code === 404) {
+              return setError(response.data.message)
+        } 
+        window.location.href = '/identifypopup'
+        ProgressIdb.addToken(`Bearer ${response.data.data.access_token}`);
+               
+        })
+        .catch(errors => {
+            setError(errors.response.data.message[0])
+        });
     }
     return (
         <div className="fixed top-0 z-10 bg-white w-screen h-screen overflow-scroll grid grid-cols-1">
