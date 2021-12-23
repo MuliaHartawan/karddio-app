@@ -17,7 +17,7 @@ const Home = () => {
           const response = await ProgressIdb.getToken();
           const token = await response[0].token;
           await axios
-          .get('http://localhost:5000/api/profile', 
+          .get('http://cardio.rizqisyahrendra.tech/api/profile', 
           {headers: {Authorization : token}})
           .then(response => {
               setData(response.data.body);
@@ -198,7 +198,7 @@ class ProgressChart extends React.Component {
       const getToken = await ProgressIdb.getToken();
       const token = await getToken[0].token;
        await axios
-        .get('http://localhost:5000/api/', 
+        .get('http://cardio.rizqisyahrendra.tech/api/', 
         {headers: {Authorization : token}})
             .then(function (response) {
               const history = response.data.body.history_point;

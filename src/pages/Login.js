@@ -12,7 +12,7 @@ const Login = () =>
 
     const onSubmit = async (data) => {
     axios
-        .post('http://localhost:5000/api/login', data)
+        .post('http://cardio.rizqisyahrendra.tech/api/login', data)
         .then(response => {
            if (response.data.code === 404) {
               return setError(response.data.message)

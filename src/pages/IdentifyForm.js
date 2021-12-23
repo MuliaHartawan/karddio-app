@@ -15,7 +15,7 @@ const IdentifyForm = () => {
         const response = await ProgressIdb.getToken();
         const token = await response[0].token;
         setToken(token);
-        const result = await axios.get('http://localhost:5000/api/list-goal',
+        const result = await axios.get('http://cardio.rizqisyahrendra.tech/api/list-goal',
             {headers: {Authorization : token}});
             setGoals(result.data.body);
     };
@@ -24,7 +24,7 @@ const IdentifyForm = () => {
 
     const onSubmit = (data) => {
       axios
-          .post('http://localhost:5000/api/identify', data,
+          .post('http://cardio.rizqisyahrendra.tech/api/identify', data,
           {
             headers: {
             'Content-Type': 'application/json',

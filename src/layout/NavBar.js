@@ -40,7 +40,7 @@ export default function Navbar({ fixed }) {
     }
     const token = await response[0].token;
     await axios
-    .get('http://localhost:5000/api/profile', 
+    .get('http://cardio.rizqisyahrendra.tech/api/profile', 
     {headers: {Authorization : token}})
     .then(response => {
         setData(response.data.body);

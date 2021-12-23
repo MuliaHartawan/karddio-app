@@ -16,12 +16,12 @@ const UpdateDataForm = () => {
         const token = await response[0].token;
         setToken(token);
         await axios
-        .get('http://localhost:5000/api/profile', 
+        .get('http://cardio.rizqisyahrendra.tech/api/profile', 
         {headers: {Authorization : token}})
         .then(response => {
             setData(response.data.body);
         })
-        const result = await axios.get('http://localhost:5000/api/list-goal',
+        const result = await axios.get('http://cardio.rizqisyahrendra.tech/api/list-goal',
             {headers: {Authorization : token}});
             setGoals(result.data.body);
     };
@@ -30,7 +30,7 @@ const UpdateDataForm = () => {
 
     const onSubmit = (data) => {
       axios
-          .put('http://localhost:5000/api/goal', data,
+          .put('http://cardio.rizqisyahrendra.tech/api/goal', data,
           {
             headers: { Authorization : token }
         })

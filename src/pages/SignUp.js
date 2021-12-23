@@ -11,7 +11,7 @@ const SignUp = () => {
     const [error, setError] = React.useState();
     const onSubmit = (data) => {
       axios
-          .post('http://localhost:5000/api/register', data)
+          .post('http://cardio.rizqisyahrendra.tech/api/register', data)
           .then(response => {window.location.href = '/login'})
           .catch(errors => {setError(errors.response.data.message[0])});
     }
