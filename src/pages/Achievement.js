@@ -84,7 +84,7 @@ const Achievement = () => {
                             <img src="./image/trophy.png" alt=""
                                     className="w-24 h-24 md:w-32 md:h-32 lg:h-40 lg:w-40" ></img>
                             <span className="absolute bg-green-400 w-8 h-8 md:w-12 md:h-12 rounded-full top-0 right-2
-                                            flex items-center justify-center font-medium text-white md:text-lg" >1</span>
+                                            flex items-center justify-center font-medium text-white md:text-lg" >{level}</span>
                         </div>
                         <p className="text-2xl md:text-3xl" ><span className="font-medium text-yellow-400" >+{point} </span>points</p>
                             <button onClick={()=> completeWorkout()}

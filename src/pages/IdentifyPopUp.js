@@ -14,7 +14,6 @@ const IdentifyPopUp = () => {
         .get('http://localhost:5000/api/profile', 
         {headers: {Authorization : token}})
         .then(response => {
-            console.log(response.data.body)
             if (response.data.body.age !== null) {
                 window.location.href = '/';
             }

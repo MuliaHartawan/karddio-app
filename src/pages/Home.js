@@ -9,6 +9,7 @@ import ProgressIdb from '../data/progress-idb';
 const Home = () => {
     const [finishedProgress, setFinishedProgress] = React.useState([]);
     const [onProgress, setOnProgress] = React.useState([]);
+    const [data, setData] = React.useState([]);
     const [level, setLevel] = React.useState([]);
 
     React.useEffect(() => {
@@ -19,6 +20,7 @@ const Home = () => {
           .get('http://localhost:5000/api/profile', 
           {headers: {Authorization : token}})
           .then(response => {
+              setData(response.data.body);
               setLevel(response.data.body.rules[0].id)
           })
           
@@ -37,7 +39,7 @@ const Home = () => {
         <div className="px-4 mb-3 md:px-24">
             <div className="flex flex-row justify-between md:mr-16 xl:mr-24">
                 <div>
-                    <h1 className="text-lg font-bold md:text-xl lg:text-3xl">Hello, Nama Orang</h1>
+                    <h1 className="text-lg font-bold md:text-xl lg:text-3xl">Hello, {data.name}</h1>
                     <p className="text-sm md:text-base lg:text-lg text-green-400">Your daily score currently</p>
                 </div>
                 <div className="relative pt-2">
@@ -75,7 +77,6 @@ const Home = () => {
                     <div className='flex flex-col justify-center mr-10'>
                         <p className="flex justify-left items-center text-base lg:text-lg font-bold">{item.workout}</p>
                         <p className="flex justify-left items-center text-xs lg:text-base font-bold">{item.workoutDuration}</p>
-                        <p className='flex justify-left items-center text-xs lg:text-base  text-green-400'>Level 1</p>
                     </div>
                     <div className='flex justify-center items-center mr-6'>
                         <RiCheckboxCircleFill className='h-8 w-8 text-green-400' />
@@ -196,14 +197,13 @@ class ProgressChart extends React.Component {
     async componentDidMount(){
       const getToken = await ProgressIdb.getToken();
       const token = await getToken[0].token;
-      console.log(token)
        await axios
         .get('http://localhost:5000/api/', 
         {headers: {Authorization : token}})
             .then(function (response) {
               const history = response.data.body.history_point;
               const getPoint = history.map(history => history.point);
-              const point = getPoint.slice(0,7)
+              const point = getPoint.slice(0,7);
               this.setState({
                 series : [{
                   name : 'History Point',

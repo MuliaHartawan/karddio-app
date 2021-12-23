@@ -34,7 +34,7 @@ const UpdateDataForm = () => {
           {
             headers: { Authorization : token }
         })
-          .then(response => {window.location.href = '/achievement'})
+          .then(response => {window.location.href = '/progress'})
           .catch(errors => {console.log(errors.response.data)});
     }
     return (

@@ -61,7 +61,6 @@ const ProgressIdb = {
       workoutDuration: workoutDuration,
       workoutFinished: true
     }
-    console.log(progress);
     return (await dbPromise).delete(OBJECT_ONPROGRESS, id) && (await dbPromise).add(OBJECT_COMPLETE, data);
   }
 };

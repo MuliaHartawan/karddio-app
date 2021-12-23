@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
 
 import ProgressIdb from "../data/progress-idb";
 
@@ -28,6 +29,25 @@ const navs = [{
 
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [data, setData] = React.useState([]);
+
+  
+  React.useEffect(() => {
+    const getData = async () => {
+    const response = await ProgressIdb.getToken();
+    if (response.length===0) {
+      return
+    }
+    const token = await response[0].token;
+    await axios
+    .get('http://localhost:5000/api/profile', 
+    {headers: {Authorization : token}})
+    .then(response => {
+        setData(response.data.body);
+    })
+};
+getData();
+}, []);
   return (
       <header className="relative flex flex-wrap items-center justify-between px-4 mb-3 md:px-24">
         <div className="container flex flex-row items-center justify-between">
@@ -43,7 +63,7 @@ export default function Navbar({ fixed }) {
                 <NavLink end to="/profile"  className="flex flex-row hidden md:flex" >
                       <img src="./image/image-profile.jpg" alt=""
                           className="w-8 h-8 rounded-full object-cover mr-2 md:w-12 md:h-12 lg:w-16 lg:h-16" ></img>
-                      <p className="flex items-center lg:text-lg" >Nama Orang</p>
+                      <p className="flex items-center lg:text-lg" >{data.name}</p>
                 </NavLink>
                 <button
                   className="text-white ml-16 cursor-pointer text-xl leading-none px-2 py-1 md:px-3 md:py-2 my-4 rounded bg-green-400 block outline-none focus:outline-none"
