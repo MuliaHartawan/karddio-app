@@ -31,7 +31,9 @@ const IdentifyForm = () => {
             Authorization : token}
         })
           .then(response => {window.location.href = '/'})
-          .catch(errors => {setError(errors.response.data.message[0])});
+          .catch(errors => {
+            console.log(data)  
+            setError(errors.response.data.message[0])});
     }
     return (
     <div className="fixed top-0 z-10 bg-white w-screen h-screen overflow-scroll grid grid-cols-1">
@@ -91,8 +93,8 @@ const IdentifyForm = () => {
                             <div className="grid grid-cols-1 gap-4">
                             {goals.map((goal) => (
                                 <div className="rounded border border-gray-400">
-                                    <input {...register("goal")}
-                                    id={goal.name} type="radio" name="goal" value={goal.id} className="hidden" />
+                                    <input {...register("goalId")}
+                                    id={goal.name} type="radio" name="goalId" value={goal.id} className="hidden" />
                                     <label for={goal.name} className="flex items-center cursor-pointer text-sm md:text-base lg:text-xl py-3 px-2">
                                     <span className="w-3 h-3 inline-block mr-2 rounded-full border border-grey bg-gray-400 shadow-inset flex-no-shrink"></span>
                                     {goal.name}</label>

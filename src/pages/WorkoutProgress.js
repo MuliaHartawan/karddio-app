@@ -185,7 +185,7 @@ const WorkoutProgress = () => {
                 </div>
                 <div className="flex justify-center">
                     <NavLink end to="/achievement">
-                        <button disabled={disable} onClick={()=>ProgressIdb.finishProgress(progress[0])}
+                        <button disabled={disable}
                         className=" bg-green-500 hover:bg-green-700 w-full md:w-36 text-center text-white font-normal py-2 px-4
                                             rounded focus:outline-none focus:shadow-outline xl:px-6
                                             xl:text-xl xl:w-48" type="button">Continue</button>

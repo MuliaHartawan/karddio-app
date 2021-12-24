@@ -9,8 +9,12 @@ const Achievement = () => {
     const [point, setPoint] = React.useState([]);
     const [weight, setWeight] = React.useState([]);
     const [token, setToken] = React.useState([]);
+    const [progress, setProgress] = React.useState([]);
+
     React.useEffect(() => {
         const getData = async () => {
+            const getProgress = await ProgressIdb.getOnProgress();
+            setProgress(getProgress);
             const getToken = await ProgressIdb.getToken();
             const token = await getToken[0].token;
             setToken(token);
@@ -37,6 +41,7 @@ const Achievement = () => {
     }, [])
 
     const completeWorkout = async () => {
+    await ProgressIdb.finishProgress(progress[0]);
        await axios
             .post('https://cardio.rizqisyahrendra.tech/api/start-workout', {},
             {headers: {Authorization : token}})

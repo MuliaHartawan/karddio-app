@@ -61,7 +61,6 @@ const Home = () => {
                     <div className='flex flex-col justify-center mr-8'>
                         <p className="flex justify-left items-center text-base lg:text-lg text-gray-300 font-bold">{item.workout}</p>
                         <p className="flex justify-left items-center text-xs lg:text-base text-gray-300 font-bold">{item.workoutDuration}</p>
-                        <p className='flex justify-left items-center text-xs lg:text-base  text-gray-300'>Level 1</p>
                     </div>
                     <div className='flex justify-center items-center mr-4'>
                         <RiCheckboxCircleFill className='h-8 w-8 text-gray-300' />
