@@ -45,7 +45,6 @@ const ProgressIdb = {
     const templateData = {
         id: id,
         workout : name,
-        workoutDuration: '15 mins',
         workoutFinished: false
     };
 
@@ -53,12 +52,11 @@ const ProgressIdb = {
   },
 
   async finishProgress(progress) {
-    const {id, workout, workoutDuration} = progress;
+    const {id, workout} = progress;
     
     const data = {
       id: id,
       workout : workout,
-      workoutDuration: workoutDuration,
       workoutFinished: true
     }
     return (await dbPromise).delete(OBJECT_ONPROGRESS, id) && (await dbPromise).add(OBJECT_COMPLETE, data);
