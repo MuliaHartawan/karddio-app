@@ -91,7 +91,7 @@ const Achievement = () => {
                             <span className="absolute bg-green-400 w-8 h-8 md:w-12 md:h-12 rounded-full top-0 right-2
                                             flex items-center justify-center font-medium text-white md:text-lg" >{level}</span>
                         </div>
-                        <p className="text-2xl md:text-3xl" ><span className="font-medium text-yellow-400" >+{point} </span>points</p>
+                        <p className="text-2xl md:text-3xl" ><span className="font-medium text-yellow-400" >+{point + 100} </span>points</p>
                             <button onClick={()=> completeWorkout()}
                             className="bg-green-500 hover:bg-green-700 w-full md:max-w-xs text-center text-white font-normal py-2 px-4
                                             rounded-md focus:outline-none focus:shadow-outline" type="button">
