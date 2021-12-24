@@ -168,7 +168,7 @@ const WorkoutProgress = () => {
                 </div>
                 <div className="w-full grid grid-cols-3 justify-between md:flex-col md:items-center">
                     <div className="flex items-center">
-                        <img src="./image/water.svg" alt="tes"
+                        <img src="./image/water.png" alt="tes"
                             className="h-20 w-24 md:h-16 md:w-20 lg:h-24 lg:w-32 xl:h-32 xl:w-40"></img>
                     </div>
                     <div className="flex flex-col justify-center text-left ml-4">
