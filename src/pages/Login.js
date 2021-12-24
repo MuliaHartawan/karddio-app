@@ -12,7 +12,7 @@ const Login = () =>
 
     const onSubmit = async (data) => {
     axios
-        .post('http://cardio.rizqisyahrendra.tech/api/login', data)
+        .post('https://cardio.rizqisyahrendra.tech/api/login', data)
         .then(response => {
            if (response.data.code === 404) {
               return setError(response.data.message)
@@ -48,7 +48,6 @@ const Login = () =>
                                 <input {...register("password")}
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="password" placeholder="Password" aria-label="Password" />
                             </div>
-                            <div className="text-right mt-2" ><a href="tes" className="text-xs font-medium" >Forgot Password ?</a></div>
                             <div className="flex flex-col items-center justify-center mt-4 mb-8 md:mt-8">
                                 <p className='font-bold text-red-500'>{error}</p>
                                 <button className="bg-green-500 hover:bg-green-700 w-full md:max-w-xs text-center text-white font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" type="submit">

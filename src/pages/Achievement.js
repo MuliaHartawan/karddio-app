@@ -15,14 +15,14 @@ const Achievement = () => {
             const token = await getToken[0].token;
             setToken(token);
             await axios
-            .get('http://cardio.rizqisyahrendra.tech/api/profile', 
+            .get('https://cardio.rizqisyahrendra.tech/api/profile', 
             {headers: {Authorization : token}})
             .then(response => {
                 const weight = response.data.body.weight;
                 setWeight(weight);
             })
             await axios
-            .get('http://cardio.rizqisyahrendra.tech/api/start-workout',
+            .get('https://cardio.rizqisyahrendra.tech/api/start-workout',
             {headers: {Authorization : token}})
             .then(response => {
                 const rules = response.data.body.rules;
@@ -38,7 +38,7 @@ const Achievement = () => {
 
     const completeWorkout = async () => {
        await axios
-            .post('http://cardio.rizqisyahrendra.tech/api/start-workout', {},
+            .post('https://cardio.rizqisyahrendra.tech/api/start-workout', {},
             {headers: {Authorization : token}})
             .then(response => {
                 window.location.href = '/alert'

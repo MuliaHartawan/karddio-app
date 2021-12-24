@@ -14,7 +14,7 @@ const Profile = () => {
         const response = await ProgressIdb.getToken();
         const token = await response[0].token;
         await axios
-        .get('http://cardio.rizqisyahrendra.tech/api/profile', 
+        .get('https://cardio.rizqisyahrendra.tech/api/profile', 
         {headers: {Authorization : token}})
         .then(response => {
             setData(response.data.body);

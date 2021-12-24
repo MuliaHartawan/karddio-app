@@ -58,7 +58,7 @@ const WorkoutProgress = () => {
             const getToken = await ProgressIdb.getToken();
             const token = await getToken[0].token;
             await axios
-            .get('http://cardio.rizqisyahrendra.tech/api/start-workout', 
+            .get('https://cardio.rizqisyahrendra.tech/api/start-workout', 
             {headers: {Authorization : token}})
             .then(response => {
                 setName(response.data.body.name);

@@ -11,7 +11,7 @@ const SignUp = () => {
     const [error, setError] = React.useState();
     const onSubmit = (data) => {
       axios
-          .post('http://cardio.rizqisyahrendra.tech/api/register', data)
+          .post('https://cardio.rizqisyahrendra.tech/api/register', data)
           .then(response => {window.location.href = '/login'})
           .catch(errors => {setError(errors.response.data.message[0])});
     }
@@ -48,9 +48,7 @@ const SignUp = () => {
                             <input {...register("confirm_password")}
                             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="password" placeholder="Confirm Password" aria-label="Password" />
                         </div>
-                        <div className="text-right mt-2" ><a href="tes" className="text-xs font-medium" >Forgot Password ?</a></div>
-                    
-                            <div className="flex flex-col justify-center mt-4 mb-8 md:mt-8">
+                            <div className="flex flex-col justify-center items-center mt-4 mb-8 md:mt-8">
                                 <p className=' font-bold text-red-500'>{error}</p>
                                 <button className="bg-green-500 hover:bg-green-700 w-full md:max-w-xs text-center text-white font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" type="submit">
                                     Sign Up
